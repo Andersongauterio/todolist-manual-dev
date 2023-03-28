@@ -6,3 +6,11 @@ npm install nodemon -D
 npm install dotenv
 
 npx eslint --init
+
+Backend project created following steps from bellow tutorial:
+https://www.youtube.com/watch?v=Cdu0WJhI-d8&t=623s
+
+-----------------------------------------------------------------------------------------
+
+Fronted project created following steps from bellow tutorial:
+https://www.youtube.com/watch?v=YVsNVPFOEuk
