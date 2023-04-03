@@ -19,6 +19,16 @@ const createElement = (tag, innerText = '', innerHTML = '') => {
   return element;
 }
 
+const createSelect = () => {
+  const options = `
+    <option value="pendente">pendente</option>
+    <option value="em andamento">em andamento</option>
+    <option value="concluida">concluida</option>
+    `;
+  const select = createElement('select', '', options);
+  return select;
+}
+
 const task = {
   id: 1,
   title: 'Inscreva-se no canal Manual do Dev',
@@ -36,8 +46,12 @@ const createRow = (task) => {
   const tdStatus = createElement('td');
   const tdActions = createElement('td');
 
+  const select = createSelect();
+
   const editButton = createElement('button', '', '<span class="material-symbols-outlined">edit</span>');
   const deleteButton = createElement('button', '', '<span class="material-symbols-outlined">delete</span>');
+
+  tdStatus.appendChild(select);
 
   editButton.classList.add('btn-action');
   deleteButton.classList.add('btn-action');
