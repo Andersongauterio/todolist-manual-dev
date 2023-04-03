@@ -32,13 +32,6 @@ const createSelect = (value) => {
   return select;
 }
 
-const task = {
-  id: 1,
-  title: 'Inscreva-se no canal Manual do Dev',
-  created_at: '01 Janeiro de 2023 00:12',
-  status: 'pendente'
-}
-
 const createRow = (task) => {
 
   const { id, title, created_at, status } = task;
@@ -67,8 +60,15 @@ const createRow = (task) => {
   tr.appendChild(tdStatus);
   tr.appendChild(tdActions);
 
-  tbody.appendChild(tr);
-
+  return tr;
 }
 
-createRow(task);
+const loadTasks = async () => {
+  const tasks = await fetchTasks();
+  tasks.forEach((task) => {
+    const tr = createRow(task);
+    tbody.appendChild(tr);
+  });
+}
+
+loadTasks();
