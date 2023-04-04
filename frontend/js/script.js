@@ -55,7 +55,7 @@ const createRow = (task) => {
 
   const tr = createElement('tr');
   const tdTitle = createElement('td', title);
-  const tdCreatedAt = createElement('td', created_at);
+  const tdCreatedAt = createElement('td', formatDate(created_at));
   const tdStatus = createElement('td');
   const tdActions = createElement('td');
 
@@ -89,6 +89,12 @@ const loadTasks = async () => {
     const tr = createRow(task);
     tbody.appendChild(tr);
   });
+}
+
+const formatDate = (dateUTC) => {
+  const options = { dateStyle: 'long', timeStyle: 'short'};
+  const date = new Date(dateUTC).toLocaleString('pt-br', options);
+  return date;
 }
 
 addForm.addEventListener('submit', addTask);
