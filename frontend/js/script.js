@@ -23,6 +23,13 @@ const addTask = async (event) => {
   inputTask.value = '';
 }
 
+const deleteTask = async (id) => {
+  await fetch(`http://localhost:3333/tasks/${id}`, {
+    method: 'delete',
+  });
+  loadTasks();
+}
+
 const createElement = (tag, innerText = '', innerHTML = '') => {
   const element = document.createElement(tag);
   if (innerText) {
@@ -68,6 +75,8 @@ const createRow = (task) => {
 
   editButton.classList.add('btn-action');
   deleteButton.classList.add('btn-action');
+
+  deleteButton.addEventListener('click', () => {deleteTask(id)});
 
   tdActions.appendChild(editButton);
   tdActions.appendChild(deleteButton);
